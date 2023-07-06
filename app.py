@@ -21,7 +21,7 @@ def predict():
 
     payload = {"operator1": a, "operator2": b, "operation": operation}
 
-    azure_internal_url = "https://calculator-app-backend--rhpj66u.internal.whitepebble-a99a4334.eastus.azurecontainerapps.io"
+    azure_internal_url = "https://container-app-backend.internal.blackcliff-8ab02ec6.eastus.azurecontainerapps.io"
     result_from_backend = requests.post(url=azure_internal_url, json=payload)
 
     if result_from_backend.status_code == 200:
