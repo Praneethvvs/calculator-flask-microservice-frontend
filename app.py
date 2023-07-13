@@ -1,5 +1,9 @@
 import requests
 from flask import Flask, request, render_template
+import os
+
+
+backend_url = os.getenv("APP_URL")
 
 # Create the app object
 app = Flask(__name__)
@@ -21,8 +25,8 @@ def predict():
 
     payload = {"operator1": a, "operator2": b, "operation": operation}
 
-    azure_internal_url = "https://container-app-backend.internal.blackcliff-8ab02ec6.eastus.azurecontainerapps.io"
-    result_from_backend = requests.post(url=azure_internal_url, json=payload)
+    # azure_internal_url = "https://container-app-backend.internal.blackcliff-8ab02ec6.eastus.azurecontainerapps.io"
+    result_from_backend = requests.post(url=backend_url, json=payload)
 
     if result_from_backend.status_code == 200:
         result = result_from_backend.json()
